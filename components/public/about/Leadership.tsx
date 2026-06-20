@@ -111,11 +111,9 @@ function LeaderCard({
           src={image}
           alt={name}
           fill
-          sizes={
-            large
-              ? "(max-width:768px) 100vw, 420px"
-              : "(max-width:768px) 100vw, 300px"
-          }
+  priority
+  sizes="(max-width: 768px) 100vw, 50vw"
+  
           className="
             object-cover
             object-top
