@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+.hero-chevron {
+  position: absolute;
+  top: -10%;
+  height: 120%;
+  width: 340px;
+
+  clip-path: polygon(
+    0 0,
+    75% 0,
+    100% 50%,
+    75% 100%,
+    0 100%,
+    25% 50%
+  );
+
+  background: rgba(255,255,255,0.06);
+}
+
+.hero-chevron-1 {
+  right: 600px;
+}
+
+.hero-chevron-2 {
+  right: 320px;
+
+  background: rgba(255,255,255,0.09);
+}
+
+.hero-chevron-3 {
+  right: 40px;
+
+  background: rgba(249,115,22,0.12);
+}
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+:root {
+  --background: #0A0A0A;
+  --surface: #111111;
+  --surface-light: #18181B;
+
+  --primary: #F97316;
+  --primary-dark: #EA580C;
+
+  --text: #FFFFFF;
+  --muted: #A1A1AA;
+}@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #0a0a0a;
+  color: white;
+}
+.hero-arrow {
+  position: absolute;
+  top: -10%;
+  width: 120px;
+  height: 120%;
+
+  opacity: 0.08;
+
+  border-right: 6px solid white;
+
+  transform: skewX(-20deg);
+
+  animation: signalMove 12s linear infinite;
+}
+
+@keyframes signalMove {
+  0% {
+    transform: skewX(-20deg) translateX(0);
+  }
+
+  50% {
+    transform: skewX(-20deg) translateX(20px);
+  }
+
+  100% {
+    transform: skewX(-20deg) translateX(0);
+  }
+}

@@ -1,0 +1,38 @@
+export const projects = [
+  {
+    id: 1,
+    slug: "formula-e-jakarta",
+    title: "Formula E Jakarta",
+    category: "Broadcast Production",
+    country: "Indonesia",
+    year: "2024",
+    image: "/images/mf-(12).jpg",
+  },
+  {
+    id: 2,
+    slug: "sea-games-cambodia",
+    title: "SEA Games Cambodia",
+    category: "Live Broadcast",
+    country: "Cambodia",
+    year: "2023",
+    image: "/images/mf-(11).jpg",
+  },
+  {
+    id: 3,
+    slug: "asian-championship",
+    title: "Asian Championship",
+    category: "Studio Production",
+    country: "Singapore",
+    year: "2024",
+    image: "/images/mf-(3).jpg",
+  },
+  {
+    id: 4,
+    slug: "ffws-2024",
+    title: "Free Fire Word Series SEA",
+    category: "Broadcast Production",
+    country: "Indonesia",
+    year: "2024",
+    image: "/images/mf-(12).jpg",
+  },
+];
