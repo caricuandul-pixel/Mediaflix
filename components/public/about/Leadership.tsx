@@ -10,7 +10,7 @@ const executives = {
   ceo: {
     name: "Imam Maryadi",
     role: "Chief Executive Officer",
-    image: "/images/imam.png",
+    image: "/images/Maryadi.png",
   },
 
   cLevel: [
