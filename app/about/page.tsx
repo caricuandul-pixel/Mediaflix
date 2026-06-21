@@ -72,7 +72,7 @@ export default function AboutPage() {
 
       <MissionVision />
 
-      <Leadership />
+      {/* <Leadership /> */}
 
       <WhyMediaflix />
 
