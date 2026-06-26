@@ -272,46 +272,38 @@ export default function InstagramFeed() {
 
         {/* CTA */}
         <motion.a
-          href="https://instagram.com/mediaflix.id"
-          target="_blank"
-          rel="noopener noreferrer"
-          initial={{
-            opacity: 0,
-            y: 20,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          className="
-            mx-auto
-            mt-14
-            flex
-            w-fit
-            items-center
-            gap-3
-            rounded-full
-            border
-            border-white/10
-            bg-[#0B0E13]
-            px-7
-            py-4
-            text-white
-            transition-all
-            duration-300
-            hover:border-orange-500/40
-            hover:text-orange-400
-          "
-        >
-          Follow @mediaflix.id
+  href="https://www.instagram.com/mediaflix.id"
+  target="_blank"
+  rel="noopener noreferrer"
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  className="
+    relative
+    z-20
+    mx-auto
+    mt-14
+    flex
+    w-fit
+    items-center
+    gap-3
+    rounded-full
+    border
+    border-white/10
+    bg-[#0B0E13]
+    px-7
+    py-4
+    text-white
+    transition-all
+    duration-300
+    hover:border-orange-500/40
+    hover:text-orange-400
+  "
+>
+  <span>Follow @mediaflix.id</span>
 
-          <ArrowRight
-            size={18}
-          />
-        </motion.a>
+  <ArrowRight size={18} />
+</motion.a>
 
       </Container>
 

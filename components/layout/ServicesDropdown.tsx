@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
@@ -8,7 +9,13 @@ import { ChevronDown } from "lucide-react";
 import { serviceItems } from "./navigation";
 
 export default function ServicesDropdown() {
+  const pathname = usePathname();
+
   const [isOpen, setIsOpen] = useState(false);
+
+  const active =
+    pathname === "/services" ||
+    pathname.startsWith("/services/");
 
   return (
     <div
@@ -17,42 +24,78 @@ export default function ServicesDropdown() {
       onMouseLeave={() => setIsOpen(false)}
     >
       {/* Trigger */}
+
       <div className="flex items-center gap-1">
         <Link
           href="/services"
           className="
             group
             relative
+            flex
+            items-center
+            justify-center
+            rounded-full
+            px-4
+            py-2.5
             text-sm
             font-medium
-            text-white/70
-            transition
+            transition-all
             duration-300
-            hover:text-white
           "
         >
-          Services
+          {active && (
+            <motion.span
+              layoutId="nav-active"
+              className="
+                absolute
+                inset-0
+                rounded-full
+                border
+                border-orange-500/20
+                bg-orange-500/10
+                shadow-[0_0_20px_rgba(249,115,22,0.15)]
+              "
+              transition={{
+                type: "spring",
+                stiffness: 450,
+                damping: 35,
+              }}
+            />
+          )}
 
           <span
-            className="
-              absolute
-              -bottom-2
-              left-0
-              h-[2px]
-              w-0
-              rounded-full
-              bg-orange-500
-              transition-all
+            className={`
+              relative
+              z-10
+              transition-colors
               duration-300
-              group-hover:w-full
-            "
-          />
+
+              ${
+                active
+                  ? "font-semibold text-orange-400"
+                  : "text-white/75 group-hover:text-white"
+              }
+            `}
+          >
+            Services
+          </span>
         </Link>
 
-        <button className="text-white/50 transition hover:text-white">
+        <button
+          className={`
+            transition-colors
+            duration-300
+
+            ${
+              active
+                ? "text-orange-400"
+                : "text-white/50 hover:text-white"
+            }
+          `}
+        >
           <ChevronDown
             size={16}
-            className={`transition duration-300 ${
+            className={`transition-transform duration-300 ${
               isOpen ? "rotate-180" : ""
             }`}
           />
@@ -98,32 +141,88 @@ export default function ServicesDropdown() {
             "
           >
             {/* Glow */}
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-transparent to-orange-400/10" />
+
+            <div
+              className="
+                absolute
+                inset-0
+                bg-gradient-to-br
+                from-orange-500/10
+                via-transparent
+                to-orange-400/10
+              "
+            />
 
             {/* Inner Border */}
-            <div className="absolute inset-[1px] rounded-[31px] border border-white/5" />
+
+            <div
+              className="
+                absolute
+                inset-[1px]
+                rounded-[31px]
+                border
+                border-white/5
+              "
+            />
 
             <div className="relative z-10">
               {/* Header */}
-              <div className="mb-4 px-2 pb-4 border-b border-white/10">
-                <p className="text-[11px] uppercase tracking-[0.35em] text-orange-400">
+
+              <div
+                className="
+                  mb-4
+                  border-b
+                  border-white/10
+                  px-2
+                  pb-4
+                "
+              >
+                <p
+                  className="
+                    text-[11px]
+                    uppercase
+                    tracking-[0.35em]
+                    text-orange-400
+                  "
+                >
                   MEDIAFLIX.ID
                 </p>
 
-                <h3 className="mt-2 text-lg font-semibold text-white">
+                <h3
+                  className="
+                    mt-2
+                    text-lg
+                    font-semibold
+                    text-white
+                  "
+                >
                   Production Services
                 </h3>
 
-                <p className="mt-1 text-sm text-zinc-500">
-                  Enterprise-grade broadcast, streaming,
-                  production and engineering solutions.
+                <p
+                  className="
+                    mt-1
+                    text-sm
+                    text-zinc-500
+                  "
+                >
+                  Enterprise-grade broadcast,
+                  streaming, production and
+                  engineering solutions.
                 </p>
               </div>
 
               {/* Services */}
+
               <div className="grid grid-cols-2 gap-2">
-                {serviceItems.map((service) => {
+                                {serviceItems.map((service) => {
                   const Icon = service.icon;
+
+                  const serviceActive =
+                    pathname === service.href ||
+                    pathname.startsWith(
+                      `${service.href}/`
+                    );
 
                   return (
                     <motion.div
@@ -134,26 +233,40 @@ export default function ServicesDropdown() {
                     >
                       <Link
                         href={service.href}
-                        className="
+                        onClick={() =>
+                          setIsOpen(false)
+                        }
+                        className={`
                           group
                           flex
                           items-center
                           gap-3
                           rounded-2xl
                           border
-                          border-transparent
-                          bg-white/[0.02]
                           px-4
                           py-4
-                          transition
+                          transition-all
                           duration-300
-                          hover:border-orange-500/20
-                          hover:bg-white/[0.05]
-                        "
+
+                          ${
+                            serviceActive
+                              ? `
+                                border-orange-500/30
+                                bg-orange-500/10
+                              `
+                              : `
+                                border-transparent
+                                bg-white/[0.02]
+                                hover:border-orange-500/20
+                                hover:bg-white/[0.05]
+                              `
+                          }
+                        `}
                       >
                         {/* Icon */}
+
                         <div
-                          className="
+                          className={`
                             flex
                             h-11
                             w-11
@@ -162,29 +275,45 @@ export default function ServicesDropdown() {
                             justify-center
                             rounded-xl
                             border
-                            border-white/10
-                            bg-orange-500/10
-                            text-orange-400
-                            transition
+                            transition-all
                             duration-300
-                            group-hover:scale-105
-                            group-hover:text-white
-                          "
+
+                            ${
+                              serviceActive
+                                ? `
+                                  border-orange-500/30
+                                  bg-orange-500/20
+                                  text-orange-400
+                                `
+                                : `
+                                  border-white/10
+                                  bg-orange-500/10
+                                  text-orange-400
+                                  group-hover:scale-105
+                                  group-hover:bg-orange-500
+                                  group-hover:text-white
+                                `
+                            }
+                          `}
                         >
                           <Icon size={18} />
                         </div>
 
                         {/* Content */}
+
                         <div>
                           <h4
-                            className="
+                            className={`
                               text-sm
-                              font-medium
-                              text-white/80
-                              transition
+                              transition-colors
                               duration-300
-                              group-hover:text-white
-                            "
+
+                              ${
+                                serviceActive
+                                  ? "font-semibold text-orange-400"
+                                  : "font-medium text-white/80 group-hover:text-white"
+                              }
+                            `}
                           >
                             {service.name}
                           </h4>
@@ -198,26 +327,48 @@ export default function ServicesDropdown() {
                   );
                 })}
               </div>
+                            {/* Footer */}
 
-              {/* Footer */}
-              <div className="mt-4 border-t border-white/10 pt-4">
+              <div
+                className="
+                  mt-4
+                  border-t
+                  border-white/10
+                  pt-4
+                "
+              >
                 <Link
                   href="/services"
-                  className="
+                  onClick={() =>
+                    setIsOpen(false)
+                  }
+                  className={`
                     flex
                     items-center
                     justify-center
                     rounded-2xl
                     border
-                    border-orange-500/20
-                    bg-orange-500/10
                     py-3
                     text-sm
                     font-medium
-                    text-orange-400
-                    transition
-                    hover:bg-orange-500/15
-                  "
+                    transition-all
+                    duration-300
+
+                    ${
+                      active
+                        ? `
+                          border-orange-500/30
+                          bg-orange-500/15
+                          text-orange-400
+                        `
+                        : `
+                          border-orange-500/20
+                          bg-orange-500/10
+                          text-orange-400
+                          hover:bg-orange-500/15
+                        `
+                    }
+                  `}
                 >
                   View All Services
                 </Link>

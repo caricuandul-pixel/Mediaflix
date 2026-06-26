@@ -129,7 +129,7 @@ export default function AboutHero() {
                   text-transparent
                 "
               >
-                OUR STORY
+              Stream your Dream
               </span>
             </motion.h1>
 
@@ -156,7 +156,7 @@ export default function AboutHero() {
             </motion.p>
 
             {/* Description */}
-            <motion.p
+            {/* <motion.p
               variants={fadeUp}
               initial="initial"
               animate="animate"
@@ -176,7 +176,7 @@ export default function AboutHero() {
               Building premium broadcast experiences through
               technology, creativity, and operational excellence
               across multiple markets and production environments.
-            </motion.p>
+            </motion.p> */}
 
             {/* CTA */}
             <motion.div

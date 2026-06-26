@@ -84,9 +84,9 @@ export default function CompanyStory() {
           transition={{ duration: 0.6 }}
           className="max-w-6xl"
         >
-          <div className="text-sm uppercase tracking-[0.45em] text-orange-400">
+          {/* <div className="text-sm uppercase tracking-[0.45em] text-orange-400">
             WHO WE ARE
-          </div>
+          </div> */}
 
           <h2 className="mt-6 text-4xl font-bold leading-[0.95] tracking-[-0.05em] text-white md:text-6xl xl:text-[4.5rem]">
             PROFESSIONAL
@@ -170,7 +170,7 @@ export default function CompanyStory() {
     className="relative z-10"
   >
     <Image
-      src="/images/mfxlogo.svg"
+      src="/images/mf-(3).jpg"
       alt="MEDIAFLIX.ID"
       width={1600}
       height={400}
@@ -186,7 +186,7 @@ export default function CompanyStory() {
   </motion.div>
 
   {/* Bottom Info */}
-  <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between border-t border-white/5 pt-8">
+  {/* <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between border-t border-white/5 pt-8">
     <div>
       <div className="text-xs uppercase tracking-[0.35em] text-orange-400">
         Global Broadcast Company
@@ -202,7 +202,7 @@ export default function CompanyStory() {
     <div className="text-xs uppercase tracking-[0.35em] text-orange-400/80">
       Since 2020
     </div>
-  </div>
+  </div> */}
 </motion.div>
           {/* Story */}
           <motion.div
@@ -230,7 +230,7 @@ export default function CompanyStory() {
 
             <div className="mt-8 space-y-6 text-lg leading-relaxed text-zinc-400">
               <p>
-                MEDIAFLIX.ID is a broadcast and media company delivering premium
+                MEDIAFLIX.ID is a broadcast and media company delivering Professional
                 production, live streaming, and technical solutions for
                 broadcasters, rights holders, brands, organizations, and event
                 owners.
@@ -247,7 +247,7 @@ export default function CompanyStory() {
                 From live sports productions and entertainment broadcasts to
                 corporate events and international productions, MEDIAFLIX.ID
                 continues to expand its capabilities while maintaining the
-                highest standards of quality, reliability, and execution.
+                highest standards Professional of quality, reliability, and execution.
               </p>
             </div>
           </motion.div>
@@ -342,7 +342,7 @@ export default function CompanyStory() {
             </h3>
 
             <p className="mt-6 max-w-3xl text-lg leading-relaxed text-zinc-400">
-              Discover how MEDIAFLIX.ID delivers premium broadcast experiences
+              Discover how MEDIAFLIX.ID delivers Professional broadcast experiences
               through technical precision, operational excellence, and
               world-class execution.
             </p>

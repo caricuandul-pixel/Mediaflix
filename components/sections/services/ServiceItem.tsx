@@ -4,81 +4,69 @@ import { motion } from "framer-motion";
 
 interface Props {
   id: string;
-  title: string;
-  description: string;
 }
 
-export default function ServiceItem({
-  id,
-  title,
-  description,
-}: Props) {
+export default function ServiceItem({ id }: Props) {
   return (
-    <motion.div
-      whileHover={{
-        x: 12,
-      }}
+    <motion.button
+      type="button"
+      whileHover={{ x: 10 }}
+      whileTap={{ scale: 0.98 }}
       className="
         group
+        flex
+        w-full
+        items-center
+        justify-between
         border-b
         border-white/10
-        py-10
+        py-8
+        text-left
         transition-all
+        duration-300
       "
     >
-      <div
+      {/* Service Number */}
+      <span
         className="
-          grid
-          gap-6
-          lg:grid-cols-[120px_1fr_80px]
+          text-xl
+          font-light
+          tracking-[0.2em]
+          text-orange-500
         "
       >
-        <div
+        {id}
+      </span>
+
+      {/* Explore */}
+      <div
+        className="
+          flex
+          items-center
+          gap-3
+          text-sm
+          font-medium
+          uppercase
+          tracking-[0.2em]
+          text-zinc-400
+          transition-all
+          duration-300
+          group-hover:text-orange-400
+        "
+      >
+        Explore Service
+
+        <span
           className="
-            text-2xl
-            font-light
-            text-orange-500
-          "
-        >
-          {id}
-        </div>
-
-        <div>
-          <h3
-            className="
-              text-3xl
-              font-semibold
-              text-white
-              transition-all
-              group-hover:text-orange-500
-            "
-          >
-            {title}
-          </h3>
-
-          <p
-            className="
-              mt-4
-              max-w-2xl
-              text-zinc-400
-            "
-          >
-            {description}
-          </p>
-        </div>
-
-        <div
-          className="
-            text-right
-            text-3xl
-            text-zinc-600
-            transition-all
-            group-hover:text-orange-500
+            text-lg
+            transition-transform
+            duration-300
+            group-hover:translate-x-1
           "
         >
           →
-        </div>
+        </span>
       </div>
-    </motion.div>
+    </motion.button>
   );
 }

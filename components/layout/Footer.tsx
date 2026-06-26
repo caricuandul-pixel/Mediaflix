@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   Mail,
   Phone,
@@ -49,13 +50,14 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h3 className="text-2xl font-bold text-white">
-              MEDIA
-              
-                FLIX
-              
-              <span className="text-orange-500">.ID</span>
-            </h3>
+             <Image
+                            src="/images/logomf.png"
+                            alt="MEDIAFLIX.ID"
+                            width={170}
+                            height={40}
+                            priority
+                            className="h-10 w-auto"
+                          />
 
             <p className="mt-5 leading-relaxed text-zinc-400">
               Solusi profesional untuk kebutuhan

@@ -3,9 +3,11 @@ import type { Metadata } from "next";
 import AboutHero from "@/components/public/about/AboutHero";
 import CompanyStory from "@/components/public/about/CompanyStory";
 import MissionVision from "@/components/public/about/MissionVision";
-import CoreValues from "@/components/public/about/CoreValues";
+// import CoreValues from "@/components/public/about/CoreValues";
 import WhyMediaflix from "@/components/public/about/WhyMediaflix";
-import Leadership from "@/components/public/about/Leadership";
+// import Leadership from "@/components/public/about/Leadership";
+import Clients from "@/components/public/clients/Clients";
+import InstagramFeed from "@/components/InstagramFeed";
 import FAQ from "@/components/public/about/FAQ";
 import CTA from "@/components/public/about/CTA";
 
@@ -76,13 +78,14 @@ export default function AboutPage() {
 
       <WhyMediaflix />
 
-      <CoreValues />
+      <Clients />
+      <InstagramFeed />
+
+      {/* <CoreValues /> */}
 
       <FAQ />
 
       <CTA />
-
-      
     </main>
   );
 }

@@ -4,32 +4,15 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 interface Props {
-  id: string;
-  title: string;
-  description: string;
   image: string;
 }
 
-export default function ServicePanel({
-  id,
-  title,
-  description,
-  image,
-}: Props) {
+export default function ServicePanel({ image }: Props) {
   return (
     <motion.article
-      initial={{
-        opacity: 0,
-        y: 80,
-      }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-      }}
-      viewport={{
-        once: true,
-        amount: 0.25,
-      }}
+      initial={{ opacity: 0, y: 80 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.25 }}
       transition={{
         duration: 0.9,
         ease: [0.16, 1, 0.3, 1],
@@ -42,135 +25,76 @@ export default function ServicePanel({
           overflow-hidden
           rounded-[40px]
           border
-          border-white/5
+          border-white/10
           bg-zinc-950
         "
       >
         {/* IMAGE */}
-        <div className="relative h-[600px] overflow-hidden">
+        <div className="relative h-[650px] overflow-hidden">
           <Image
             src={image}
-            alt={title}
+            alt="Service"
             fill
-            /* sizes diperbarui ke 100vw agar browser mengenali skala penuh container pada semua resolusi monitor */
             sizes="100vw"
-            className="object-cover"
+            className="
+              object-cover
+              transition-transform
+              duration-700
+              group-hover:scale-105
+            "
           />
         </div>
 
-        {/* OVERLAY */}
-        <div
-          className="
-            absolute
-            inset-0
-            bg-gradient-to-t
-            from-black
-            via-black/55
-            to-black/10
-          "
-        />
+        {/* DARK OVERLAY */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
 
-        {/* ORANGE GLOW */}
+        {/* GLOW */}
         <div
           className="
             absolute
-            right-0
-            top-0
-            h-72
-            w-72
-            rounded-full
-            bg-orange-500/15
-            blur-3xl
-          "
-        />
-
-        {/* CONTENT */}
-        <div
-          className="
-            absolute
+            left-1/2
             bottom-0
-            left-0
-            z-10
-            w-full
-            p-8
-            md:p-14
-            lg:p-16
+            h-80
+            w-80
+            -translate-x-1/2
+            rounded-full
+            bg-orange-500/20
+            blur-[120px]
+          "
+        />
+
+        {/* CTA */}
+        <div
+          className="
+            absolute
+            bottom-12
+            left-1/2
+            z-20
+            -translate-x-1/2
           "
         >
-          {/* ID */}
-          <div
-            className="
-              inline-flex
-              items-center
-              rounded-full
-              border
-              border-orange-500/30
-              bg-orange-500/10
-              px-4
-              py-2
-              text-xs
-              font-medium
-              tracking-[0.25em]
-              text-orange-400
-            "
-          >
-            {id}
-          </div>
-
-          {/* TITLE */}
-          <h3
-            className="
-              mt-6
-              max-w-4xl
-              text-4xl
-              font-bold
-              leading-[0.95]
-              tracking-tight
-              text-white
-              md:text-6xl
-              xl:text-7xl
-            "
-          >
-            {title}
-          </h3>
-
-          {/* DESCRIPTION */}
-          <p
-            className="
-              mt-6
-              max-w-2xl
-              text-base
-              leading-relaxed
-              text-zinc-300
-              md:text-lg
-            "
-          >
-            {description}
-          </p>
-
-          {/* CTA */}
           <button
-            type="button"
             className="
-              mt-10
               inline-flex
               items-center
               gap-3
               rounded-full
               border
-              border-white/10
-              bg-white/5
-              px-6
-              py-3
+              border-white/15
+              bg-white/10
+              px-8
+              py-4
               text-sm
               font-medium
+              tracking-[0.2em]
+              uppercase
               text-white
-              backdrop-blur-sm
+              backdrop-blur-xl
               transition-all
-              duration-300
-              hover:border-orange-500/50
-              hover:bg-orange-500/10
-              hover:text-orange-300
+              duration-500
+              hover:border-orange-500
+              hover:bg-orange-500
+              hover:text-black
             "
           >
             Explore Service
@@ -187,7 +111,7 @@ export default function ServicePanel({
           </button>
         </div>
 
-        {/* BOTTOM BORDER ACCENT */}
+        {/* Hover Border */}
         <div
           className="
             absolute

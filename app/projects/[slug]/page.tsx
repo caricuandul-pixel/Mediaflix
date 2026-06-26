@@ -1,5 +1,7 @@
 import { notFound } from "next/navigation";
-
+import Link from "next/link";
+import Container from "@/components/ui/Container";
+import { ArrowLeft } from "lucide-react";
 import type {
   Metadata,
 } from "next";
@@ -31,6 +33,7 @@ import ProjectSolution from "@/components/public/projects/ProjectSolution";
 import ProjectResult from "@/components/public/projects/ProjectResult";
 
 import ProjectCTA from "@/components/public/projects/ProjectCTA";
+import ProjectRelated from "@/components/public/projects/ProjectRelated";
 
 export async function generateStaticParams() {
   return projectSlugs.map(
@@ -118,7 +121,15 @@ export default async function ProjectPage({
       <ProjectHero
         project={project}
       />
-
+<Container >
+  <Link
+    href="/projects"
+    className="inline-flex items-center gap-2 mt-5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+  >
+    <ArrowLeft className="h-4 w-4" />
+    <span className="text-orange-400">Back to Projects</span>
+  </Link>
+</Container>
       <ProjectOverview
         project={project}
       />
@@ -138,6 +149,10 @@ export default async function ProjectPage({
       <ProjectResult
         project={project}
       />
+      <ProjectRelated
+  project={project}
+/>
+
 
       <ProjectCTA />
     </>

@@ -77,7 +77,7 @@ export default function Hero() {
             text-zinc-300
           "
         >
-          Across Asia and Beyond
+          Across National and Beyond
         </p>
 
         <button

@@ -3,18 +3,10 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-interface Project {
-  id: number;
-  slug: string;
-  title: string;
-  category: string;
-  country: string;
-  year: string;
-  image: string;
-}
+import type { ProjectData } from "@/data/projects/types";
 
 interface Props {
-  projects: Project[];
+  projects: ProjectData[];
   activeProject: number;
   setActiveProject: React.Dispatch<
     React.SetStateAction<number>
@@ -50,16 +42,15 @@ export default function ProjectList({
             text-sm
             text-zinc-400
             transition-colors
+            duration-300
             hover:text-orange-500
           "
         >
           View All
 
           <motion.span
+            whileHover={{ x: 4 }}
             className="text-orange-500"
-            whileHover={{
-              x: 4,
-            }}
           >
             →
           </motion.span>
@@ -73,8 +64,12 @@ export default function ProjectList({
 
           return (
             <button
-              key={project.id}
+              key={project.slug}
+              type="button"
               onMouseEnter={() =>
+                setActiveProject(index)
+              }
+              onFocus={() =>
                 setActiveProject(index)
               }
               className="
@@ -108,8 +103,8 @@ export default function ProjectList({
                     absolute
                     inset-0
                     bg-gradient-to-r
-                    from-orange-500/[0.06]
-                    via-orange-500/[0.02]
+                    from-orange-500/10
+                    via-orange-500/5
                     to-transparent
                   "
                 />
@@ -133,7 +128,10 @@ export default function ProjectList({
                         }
                       `}
                     >
-                      {project.id}
+                      {String(index + 1).padStart(
+                        2,
+                        "0"
+                      )}
                     </div>
 
                     {/* Title */}
@@ -142,7 +140,7 @@ export default function ProjectList({
                         mt-3
                         text-2xl
                         font-semibold
-                        transition-all
+                        transition-colors
                         duration-300
                         ${
                           active
@@ -153,6 +151,24 @@ export default function ProjectList({
                     >
                       {project.title}
                     </h4>
+
+                    {/* Category + Year */}
+                    <div className="mt-2 flex items-center gap-2 text-sm text-zinc-500">
+                      <span>
+                        {project.category}
+                      </span>
+
+                      <span>•</span>
+
+                      <span>
+                        {project.year}
+                      </span>
+                    </div>
+
+                    {/* Location */}
+                    <p className="mt-1 text-sm text-zinc-600">
+                      {project.location}
+                    </p>
                   </div>
 
                   {/* Arrow */}
@@ -178,18 +194,10 @@ export default function ProjectList({
 
                 {/* Animated Line */}
                 <div className="relative mt-5 h-[2px] overflow-hidden">
-                  {/* Base line */}
-                  <div
-                    className="
-                      absolute
-                      inset-0
-                      bg-white/10
-                    "
-                  />
+                  <div className="absolute inset-0 bg-white/10" />
 
                   {active && (
                     <>
-                      {/* Orange Line */}
                       <motion.div
                         layoutId="project-line"
                         className="
@@ -206,7 +214,6 @@ export default function ProjectList({
                         }}
                       />
 
-                      {/* Gloss Sweep */}
                       <motion.div
                         className="
                           absolute
@@ -236,26 +243,6 @@ export default function ProjectList({
           );
         })}
       </div>
-
-      {/* Footer Link */}
-      {/* <div className="mt-auto pt-8">
-        <Link
-          href="/projects"
-          className="
-            inline-flex
-            items-center
-            gap-3
-            text-sm
-            font-medium
-            text-orange-500
-            transition-all
-            hover:gap-4
-          "
-        >
-          Explore All Projects
-          <span>→</span>
-        </Link>
-      </div> */}
     </div>
   );
 }
